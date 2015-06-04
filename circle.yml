@@ -1,0 +1,11 @@
+machine:
+  services:
+    - docker
+dependencies:
+  override:
+    - docker build -t redis .
+    - bundle install
+    - docker exec -it redis /bin/bash/ 
+test:
+  override:
+    - rake spec
